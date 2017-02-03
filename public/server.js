@@ -46,4 +46,6 @@
 
     // listen (start app with node server.js) ======================================
     app.listen(port, ip);
-    console.log("App listening on port 8080");
+    console.log('Server running on http://%s:%s', ip, port);
+
+    module.exports = app ;
