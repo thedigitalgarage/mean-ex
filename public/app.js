@@ -4,11 +4,11 @@ app.controller('MainCtrl', [
   '$scope',
   function($scope){
     $scope.posts = [
-      {title: 'post 1', upvotes: 5},
-      {title: 'post 2', upvotes: 2},
-      {title: 'post 3', upvotes: 15},
-      {title: 'post 4', upvotes: 9},
-      {title: 'post 5', upvotes: 4}
+      {title: 'From the Web Console homepage, navigate to your project', upvotes: 5},
+      {title: 'Click on Browse &gt; Builds', upvotes: 2},
+      {title: 'Click the link with your BuildConfig name', upvotes: 15},
+      {title: 'Click the Configuration tab', upvotes: 9},
+      {title: 'Click the "Copy to clipboard" icon to the right of the "GitHub webhook URL" field', upvotes: 4}
     ];
     $scope.addPost = function(){
       if(!$scope.title || $scope.title === '') { return; }
