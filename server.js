@@ -47,6 +47,7 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 }
 
 mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
+console.log(mongoURL)
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
