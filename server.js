@@ -29,6 +29,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 console.log(mongoURL)
 console.log(process.env.OPENSHIFT_MONGODB_DB_URL)
 console.log(process.env.MONGO_URL)
+console.log(process.env.DATABASE_SERVICE_NAME)
 
 if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     var mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
