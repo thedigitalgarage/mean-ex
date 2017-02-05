@@ -48,6 +48,8 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
 
 mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
 
+console.log('Connected to MongoDB at: %s', mongoURL);
+
 // define model =================
 var Todo = mongoose.model('Todo', {
     text: String
