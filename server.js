@@ -46,35 +46,19 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     }
 }
 
-var db = null,
-    dbDetails = new Object();
+mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
 
-var initDb = function(callback) {
-    if (mongoURL == null) return;
-
-    var mongodb = require('mongodb');
-    if (mongodb == null) return;
-
-    mongodb.connect(mongoURL, function(err, conn) {
-        if (err) {
-            callback(err);
-            return;
-        }
-
-        db = conn;
-        dbDetails.databaseName = db.databaseName;
-        dbDetails.url = mongoURLLabel;
-        dbDetails.type = 'MongoDB';
-
-        console.log('Connected to MongoDB at: %s', mongoURL);
-    });
-};
-
-initDb(function(err) {
-    console.log('Error connecting to Mongo. Message:\n' + err);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log('Open Connection with MongoDB: %s', mongourl);
+  // define model =================
+  var Todo = mongoose.model('Todo', {
+      text: String
+  });
 });
 
-//mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
+
 
 //console.log('Connected to MongoDB at: %s', mongoURL);
 
@@ -87,7 +71,7 @@ var Todo = mongoose.model('Todo', {
 
 // api ---------------------------------------------------------------------
 // get all todos
-/*app.get('/api/todos', function(req, res) {
+app.get('/api/todos', function(req, res) {
     // use mongoose to get all todos in the database
     Todo.find(function(err, todos) {
 
@@ -136,10 +120,9 @@ app.delete('/api/todos/:todo_id', function(req, res) {
         });
     });
 });
-*/
 
 // application -------------------------------------------------------------
-app.get('*', function(req, res) {
+/*app.get('*', function(req, res) {
     if (db) {
         var col = db.collection('counts');
         // Create a document with request IP and current time of request
@@ -161,6 +144,7 @@ app.get('*', function(req, res) {
         });
     }
 });
+*/
 
 
 // listen (start app with node server.js) ======================================
