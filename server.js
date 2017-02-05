@@ -38,7 +38,6 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
         mongoDatabase = process.env[mongoServiceName + '_DATABASE'],
         mongoPassword = process.env[mongoServiceName + '_PASSWORD']
         mongoUser = process.env[mongoServiceName + '_USER'];
-        console.log(mongoHost)
 
     if (mongoHost && mongoPort && mongoDatabase) {
         mongoURLLabel = mongoURL = 'mongodb://';
@@ -48,12 +47,11 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
         // Provide UI label that excludes user id and pw
         mongoURLLabel += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
         mongoURL += mongoHost + ':' + mongoPort + '/' + mongoDatabase;
-        console.log('in if' + mongoURL)
 
     }
 }
 
-mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb'); // connect to mongoDB database on modulus.io
 console.log(mongoURL)
 
 var db = mongoose.connection;
