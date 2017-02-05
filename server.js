@@ -87,21 +87,20 @@ var Todo = mongoose.model('Todo', {
 
 // api ---------------------------------------------------------------------
 // get all todos
-app.get('/api/todos', function(req, res) {
-
+/*app.get('/api/todos', function(req, res) {
     // use mongoose to get all todos in the database
     Todo.find(function(err, todos) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err)
+       if (err)
             res.send(err)
 
-        res.json(todos); // return all todos in JSON format
-    });
+       res.json(todos); // return all todos in JSON format
+   });
 });
 
 // create todo and send back all todos after creation
-app.post('/api/todos', function(req, res) {
+ app.post('/api/todos', function(req, res) {
 
     // create a todo, information comes from AJAX request from Angular
     Todo.create({
@@ -137,6 +136,7 @@ app.delete('/api/todos/:todo_id', function(req, res) {
         });
     });
 });
+*/
 
 // application -------------------------------------------------------------
 app.get('*', function(req, res) {
