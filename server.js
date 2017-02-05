@@ -46,9 +46,37 @@ if (mongoURL == null && process.env.DATABASE_SERVICE_NAME) {
     }
 }
 
-mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
+var db = null,
+    dbDetails = new Object();
 
-console.log('Connected to MongoDB at: %s', mongoURL);
+var initDb = function(callback) {
+    if (mongoURL == null) return;
+
+    var mongodb = require('mongodb');
+    if (mongodb == null) return;
+
+    mongodb.connect(mongoURL, function(err, conn) {
+        if (err) {
+            callback(err);
+            return;
+        }
+
+        db = conn;
+        dbDetails.databaseName = db.databaseName;
+        dbDetails.url = mongoURLLabel;
+        dbDetails.type = 'MongoDB';
+
+        console.log('Connected to MongoDB at: %s', mongoURL);
+    });
+};
+
+initDb(function(err) {
+    console.log('Error connecting to Mongo. Message:\n' + err);
+});
+
+//mongoose.connect(mongoURL); // connect to mongoDB database on modulus.io
+
+//console.log('Connected to MongoDB at: %s', mongoURL);
 
 // define model =================
 var Todo = mongoose.model('Todo', {
@@ -111,9 +139,28 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 });
 
 // application -------------------------------------------------------------
-    app.get('*', function(req, res) {
-        res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    });
+app.get('*', function(req, res) {
+    if (db) {
+        var col = db.collection('counts');
+        // Create a document with request IP and current time of request
+        col.insert({
+            ip: req.ip,
+            date: Date.now()
+        });
+        col.count(function(err, count) {
+            res.render('index.html', {
+                pageCountMessage: count,
+                dbInfo: dbDetails
+            });
+        });
+    } else {
+        //res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+        res.render('./public/index.html', {
+            pageCountMessage: null
+        });
+    }
+});
+
 
 // listen (start app with node server.js) ======================================
 app.listen(port, ip);
