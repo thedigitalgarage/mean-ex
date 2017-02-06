@@ -28,7 +28,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
   var mongodburl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
 } else {
-  var mongodburl = 'mongodb://127.0.0.1/sampledb';
+  var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
 
 //    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
