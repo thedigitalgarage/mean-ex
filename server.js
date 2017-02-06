@@ -66,7 +66,7 @@ console.log(mongodburl)
 }
 */
 
-mongoose.connect(mongodburl);// connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb');// connect to mongoDB database on modulus.io
 
 
 var db = mongoose.connection;
