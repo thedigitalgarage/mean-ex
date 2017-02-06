@@ -21,7 +21,7 @@ app.use(methodOverride());
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     mongoServiceName = process.env.DATABASE_SERVICE_NAME,
-    mongoHost = 'mongdb',
+    mongoHost = 'mongodb',
     mongoPort = '27017',
     mongoDatabase = process.env.MONGODB_DATABASE,
     mongoPassword = process.env.MONGODB_PASSWORD,
