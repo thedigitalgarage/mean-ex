@@ -66,7 +66,7 @@ console.log(mongodburl)
 }
 */
 
-mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb');// connect to mongoDB database on modulus.io
+mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb');// connect to mongoDB database
 
 
 var db = mongoose.connection;
@@ -79,13 +79,29 @@ db.once('open', function() {
     name: String
   });
 
-  // cria metodo "falar" no model
+/*  // cria metodo "falar" no model
   todoSchema.methods.talk = function () {
     return "My name is " + this.name + '\n';
   }
+*/
 
   // instanciate the model =================
   var Todo = mongoose.model('Todo', todoSchema)
+
+  Todo.create({
+      text: 'create hello world',
+      done: false
+  }, function(err, todo) {
+      if (err)
+          res.send(err);
+
+      // get and return all the todos after you create another
+      Todo.find(function(err, todos) {
+          if (err)
+              res.send(err)
+          res.json(todos);
+      });
+  });
 });
 
 
