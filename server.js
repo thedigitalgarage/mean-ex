@@ -36,7 +36,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 } else {
   var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
-
+console.log(mongodburl)
 //    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
 //    mongoURLLabel = "";
 
@@ -67,7 +67,7 @@ if (process.env.OPENSHIFT_MONGODB_DB_URL) {
 */
 
 mongoose.connect(mongodburl);// connect to mongoDB database on modulus.io
-//console.log(mongoURL)
+
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
