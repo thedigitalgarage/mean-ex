@@ -3,6 +3,7 @@
 // set up ========================
 var express = require('express');
 var app = express(); // create our app w/ express
+var fs = require('fs')
 var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
@@ -22,9 +23,16 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
-    mongoURLLabel = "";
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
+if (process.env.OPENSHIFT_MONGODB_DB_URL) {
+  var mongodburl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
+} else {
+  var mongodburl = 'mongodb://127.0.0.1/sampledb';
+}
+
+//    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
+//    mongoURLLabel = "";
 
 //console.log(mongoURL)
 //console.log(process.env.OPENSHIFT_MONGODB_DB_URL)
@@ -52,17 +60,26 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
 }
 */
 
-mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb'); // connect to mongoDB database on modulus.io
+mongoose.connect(mongodburl);// connect to mongoDB database on modulus.io
 //console.log(mongoURL)
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
-  console.log('Open Connection with MongoDB: %s');
-  // define model =================
-  var Todo = mongoose.model('Todo', {
-      text: String
+  console.log('Open Connection with MongoDB: %s', mongodburl);
+
+  // define nosso schema
+  var todoSchema = mongoose.Schema({
+    name: String
   });
+
+  // cria metodo "falar" no model
+  todoSchema.methods.talk = function () {
+    return "My name is " + this.name + '\n';
+  }
+
+  // instanciate the model =================
+  var Todo = mongoose.model('Todo', todoSchema)
 });
 
 
