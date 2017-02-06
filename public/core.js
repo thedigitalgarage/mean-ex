@@ -1,5 +1,7 @@
 // public/core.js
-var scotchTodo = angular.module('scotchTodo', []);
+var scotchTodo = angular.module('scotchTodo', [
+  'ngRoute'
+]);
 
 function mainController($scope, $http) {
     $scope.formData = {};
