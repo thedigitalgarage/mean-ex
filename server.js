@@ -24,15 +24,15 @@ app.use(methodOverride());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+    mongoServiceName = process.env.DATABASE_SERVICE_NAME,
     mongoHost = 'mongdb',
     mongoPort = '27017',
-    mongoDatabase = 'sampledb',
-    mongoPassword = 'mountain1'
-    mongoUser = 'testuser1';
+    mongoDatabase = process.env.MONGODB_DATABASE,
+    mongoPassword = process.env.MONGODB_PASSWORD,
+    mongoUser = process.env.MONGODB_USER;
 
-if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  var mongodburl = mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + process.env.OPENSHIFT_MONGODB_DB_URL + mongoPort + '/' + mongoDatabase;
+if (process.env.DATABASE_SERVICE_NAME) {
+  var mongodburl = mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + mongoServiceName +':' + mongoPort + '/' + mongoDatabase;
 } else {
   var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
