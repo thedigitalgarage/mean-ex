@@ -23,10 +23,16 @@ app.use(bodyParser.json({
 app.use(methodOverride());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
+    mongoServiceName = process.env.DATABASE_SERVICE_NAME.toUpperCase(),
+    mongoHost = 'mongdb',
+    mongoPort = '27017',
+    mongoDatabase = 'sampledb',
+    mongoPassword = 'mountain1'
+    mongoUser = 'testuser1';
 
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  var mongodburl = process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME;
+  var mongodburl += mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + process.env.OPENSHIFT_MONGODB_DB_URL + mongoPort + '/' + mongoDatabase;
 } else {
   var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
