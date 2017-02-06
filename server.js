@@ -13,13 +13,9 @@ var methodOverride = require('method-override'); // simulate DELETE and PUT (exp
 
 app.use(express.static(__dirname + '/public')); // set the static files location /public/img will be /img for users
 app.use(morgan('combined')); // log every request to the console
-app.use(bodyParser.urlencoded({
-    'extended': 'true'
-})); // parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({'extended': 'true'})); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
-app.use(bodyParser.json({
-    type: 'application/vnd.api+json'
-})); // parse application/vnd.api+json as json
+app.use(bodyParser.json({type: 'application/vnd.api+json'})); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
@@ -37,6 +33,16 @@ if (process.env.DATABASE_SERVICE_NAME) {
   var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
 console.log(mongodburl)
+
+mongoose.connect(mongodburl);// connect to mongoDB database
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+
+var Todo = mongoose.model('Todo', {
+        text : String
+    });
+
+
 //    mongoURL = process.env.OPENSHIFT_MONGODB_DB_URL || process.env.MONGO_URL,
 //    mongoURLLabel = "";
 
@@ -66,18 +72,24 @@ console.log(mongodburl)
 }
 */
 
-mongoose.connect('mongodb://testuser1:mountain1@test-1-mongodb:27017/sampledb');// connect to mongoDB database
 
 
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+
+
+
+
+
+
+
+/*
+  db.once('open', function() {
   console.log('Open Connection with MongoDB: %s', mongodburl);
 
   // define nosso schema
   var todoSchema = mongoose.Schema({
     name: String
   });
+*/
 
 /*  // cria metodo "falar" no model
   todoSchema.methods.talk = function () {
@@ -85,7 +97,7 @@ db.once('open', function() {
   }
 */
 
-  // instanciate the model =================
+/*  // instanciate the model =================
   var Todo = mongoose.model('Todo', todoSchema)
 
   Todo.create({
@@ -103,6 +115,7 @@ db.once('open', function() {
       });
   });
 });
+*/
 
 
 
@@ -168,7 +181,7 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 });
 
 // application -------------------------------------------------------------
-/*app.get('*', function(req, res) {
+app.get('*', function(req, res) {
     if (db) {
         var col = db.collection('counts');
         // Create a document with request IP and current time of request
@@ -190,7 +203,6 @@ app.delete('/api/todos/:todo_id', function(req, res) {
         });
     }
 });
-*/
 
 
 // listen (start app with node server.js) ======================================
