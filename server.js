@@ -32,7 +32,7 @@ var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     mongoUser = 'testuser1';
 
 if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-  var mongodburl += mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + process.env.OPENSHIFT_MONGODB_DB_URL + mongoPort + '/' + mongoDatabase;
+  var mongodburl = mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + process.env.OPENSHIFT_MONGODB_DB_URL + mongoPort + '/' + mongoDatabase;
 } else {
   var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
 }
