@@ -8,6 +8,7 @@ var mongoose = require('mongoose'); // mongoose for mongodb
 var morgan = require('morgan'); // log requests to the console (express4)
 var bodyParser = require('body-parser'); // pull information from HTML POST (express4)
 var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+var database = require('./config/database'); //load the database config
 
 // configuration =================
 
@@ -20,21 +21,8 @@ app.use(methodOverride());
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
     ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
-    mongoServiceName = process.env.DATABASE_SERVICE_NAME,
-    mongoHost = 'mongodb',
-    mongoPort = '27017',
-    mongoDatabase = process.env.MONGODB_DATABASE,
-    mongoPassword = process.env.MONGODB_PASSWORD,
-    mongoUser = process.env.MONGODB_USER;
 
-if (process.env.DATABASE_SERVICE_NAME) {
-  var mongodburl = mongoHost + '://' + mongoUser + ':' + mongoPassword + '@' + mongoServiceName +':' + mongoPort + '/' + mongoDatabase;
-} else {
-  var mongodburl = 'mongodb://testuser1:mountain1@127.0.0.1:27017/sampledb';
-}
-console.log(mongodburl)
-
-mongoose.connect(mongodburl);// connect to mongoDB database
+mongoose.connect(database.url);// connect to mongoDB database
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 
