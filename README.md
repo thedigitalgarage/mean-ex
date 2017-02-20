@@ -35,17 +35,20 @@ Looking at the repo, you'll notice one file in the openshift/template directory:
 
 	mean-ex
 	├── README.md
+	├── config
+	|   └── database.js
 	├── openshift
 	│   └── templates
-	│       ├── nodejs-mongodb.json
+	│       ├── qs-mean.json
+	├── public
+	|   └── index.html
 	├── package.json
 	├── server.js
-	└── views
-	    └── index.html
+	
 
-We can create the the new app from the `nodejs-mongodb.json` template by using the `-f` flag and pointing the tool at a path to the template file:
+We can create the the new app from the `qs-mean.json` template by using the `-f` flag and pointing the tool at a path to the template file:
 
-        $ oc new-app -f /path/to/nodejs-mongodb.json
+        $ oc new-app -f /path/to/qs-mean.json
 
 #### Build the app
 
@@ -57,11 +60,11 @@ Check the status of your new nodejs app with the command:
 
 Which should return something like:
 
-        In project my-project on server https://10.2.2.2:8443
+        In project my-project on server https://apps.thedigitalgarage.io:8443
 
         svc/mean-ex - 172.30.108.183:8080
-          dc/mean-ex deploys istag/nodejs-ex:latest <-
-            bc/mean-ex builds https://github.com/openshift/nodejs-ex with openshift/nodejs:0.10
+          dc/mean-ex deploys istag/mean-ex:latest <-
+            bc/mean-ex builds https://github.com/thedigitalgarage/mean-ex with openshift/nodejs:0.10
               build #1 running for 7 seconds
             deployment #1 waiting on image or update
 
@@ -82,21 +85,15 @@ Deployment happens automatically once the new application image is available.  T
 This will help indicate what IP address the service is running, the default port for it to deploy at is 8080. Output should look like:
 
         NAME        CLUSTER-IP       EXTERNAL-IP   PORT(S)    SELECTOR                                AGE
-        mean-ex   172.30.249.251   <none>        8080/TCP   deploymentconfig=nodejs-ex,name=myapp   17m
+        mean-ex   172.30.249.251   <none>        8080/TCP   deploymentconfig=mean-ex,name=myapp   17m
 
 #### Configure routing
 
-An OpenShift route exposes a service at a host name, like www.example.com, so that external clients can reach it by name.
+A route exposes a service at a host name, like www.example.com, so that external clients can reach it by name.
 
-DNS resolution for a host name is handled separately from routing; you may wish to configure a cloud domain that will always correctly resolve to the OpenShift router, or if using an unrelated host name you may need to modify its DNS records independently to resolve to the router.
+DNS resolution for a host name is handled separately from routing; you may wish to configure a cloud domain that will always correctly resolve to the Digital Garage router, or if using an unrelated host name you may need to modify its DNS records independently to resolve to the router. You can see an example of how to create routing and [DNS resolution through Godaddy](http://community.thedigitalgarage.io/setup-godaddy-domain/).
 
-After logging into the web console with your account credentials, make sure you are in the correct project/workspace and then click `Create route`.
-
-This could also be accomplished by running:
-
-        $ oc expose svc/mean-ex --hostname=myapp-myproject.apps.thedigitalgarage.io
-
-in the CLI.
+The MEAN Stack template creates a route for you. If you do not specify a route name, the template will assign a default route name in the form `myapp-myproject.apps.thedigitalgarage.io`. This route can be accessed from external clients.
 
 Now navigate to the newly created MEAN web app at the hostname we just configured.
 
