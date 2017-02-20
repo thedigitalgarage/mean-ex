@@ -9,7 +9,7 @@ If you do not already have an account you can sign up for free [here](www.thedig
 
 ### Creating new apps
 
-You can create a new application using the web console or by running the `oc new-app` command from the CLI. With the  OpenShift CLI there are three ways to create a new application, by specifying either:
+You can create a new application using the web console or by running the `oc new-app` command from the [Digital Garage Command Line Interface (CLI)](http://docs.thedigitalgarage.io/getting_started/beyond_the_basics.html#btb-installing-the-digital-garage-cli). With the  CLI there are three ways to create a new application, by specifying either:
 
 - [With source code](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-source-code)
 - [Via templates](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template)
