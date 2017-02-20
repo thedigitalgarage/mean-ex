@@ -13,7 +13,7 @@ You can create a new application using the web console or by running the `oc new
 
 - [With source code](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-source-code)
 - [Via templates](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-a-template)
-- [DockerHub images](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-an-image)
+- [DockerHub images](http://docs.thedigitalgarage.io/dev_guide/new_app.html#specifying-an-image) (not discissed in this tutorial)
 
 #### Create a new app from source code (method 1)
 
