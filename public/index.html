@@ -1,39 +1,33 @@
 <!-- index.html -->
 <!doctype html>
 
-<!-- ASSIGN OUR ANGULAR MODULE -->
 <html>
 
 <head>
     <!-- META -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Optimize mobile viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Digital Garage Quickstart Angular App</title>
 
-    <!-- SCROLLS -->
+    <!-- get bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-    <!-- load bootstrap -->
-    <!-- SPELLS -->
+    <!-- get jquery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-    <!-- load jquery -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-    <!-- load angular -->
-    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-route.js"></script>
-    <!-- load angular-route -->
-    <script src="core.js"></script>
+    <!-- get angularjs -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <!-- tell angularjs where our module lives-->
+    <script src="app.js"></script>
 
 </head>
-<!-- SET THE CONTROLLER AND GET ALL TASKS -->
+<!-- add our angularjs module and controller -->
 
 <body ng-app="helloWorld" ng-controller="MainCtrl">
     <section class='container'>
-        <hgroup>
-            <h2> {{test}} </h2>
-        </hgroup>
-
-
+        <div class="page-header">
+            <h1> {{test}} </h1>
+        </div>
         <div class="row">
             <section class='col-xs-12 col-sm-6 col-md-6'>
                 <section>
@@ -61,19 +55,15 @@
 
                     <h3>Working in your local Git repository</h3>
                     <p>If you forked the application from the Digital Garage GitHub example, you'll need to manually clone the repository to your local system. Copy the application's source code Git URL and then run:</p>
-
                     <pre>$ git clone &lt;git_url&gt; &lt;directory_to_create&gt;
+                          # Within your project directory
+                          # Commit your changes and push to Digital Garage
 
-  # Within your project directory
-  # Commit your changes and push to Digital Garage
-
-  $ git commit -a -m 'Some commit message'
-  $ git push</pre>
-
+                          $ git commit -a -m 'Some commit message'
+                          $ git push
+                    </pre>
                     <p>After pushing changes, you'll need to manually trigger a build if you did not setup a webhook as described above.</p>
-
                 </section>
-
             </section>
             <section class="col-xs-12 col-sm-6 col-md-6">
 
@@ -98,4 +88,5 @@
         </div>
     </section>
 </body>
+
 </html>
