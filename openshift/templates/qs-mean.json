@@ -361,23 +361,23 @@
     {
       "name": "MEMORY_LIMIT",
       "displayName": "Memory Limit",
-      "description": "Maximum amount of memory the Node.js container can use.",
+      "description": "Maximum amount of memory the Node.js container can use. The default value of 256Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
       "required": true,
-      "value": "512Mi"
+      "value": "256Mi"
     },
     {
       "name": "MEMORY_MONGODB_LIMIT",
       "displayName": "Memory Limit (MongoDB)",
-      "description": "Maximum amount of memory the MongoDB container can use.",
+      "description": "Maximum amount of memory the MongoDB container can use. The default value of 256Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
       "required": true,
-      "value": "512Mi"
+      "value": "256Mi"
     },
     {
       "name": "SOURCE_REPOSITORY_URL",
       "displayName": "Git Repository URL",
       "description": "The URL of the repository with your application source code.",
       "required": true,
-      "value": "https://github.com/thedigitalgarage/nodejs-ex.git"
+      "value": "https://github.com/thedigitalgarage/mean-ex.git"
     },
     {
       "name": "SOURCE_REPOSITORY_REF",
