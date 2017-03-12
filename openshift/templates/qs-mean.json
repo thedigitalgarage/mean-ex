@@ -186,11 +186,11 @@
                   },
                   {
                     "name": "MONGODB_USER",
-                    "value": "${MONGODB_USER}"
+                    "value": "${DATABASE_USER}"
                   },
                   {
                     "name": "MONGODB_PASSWORD",
-                    "value": "${MONGODB_PASSWORD}"
+                    "value": "${DATABASE_PASSWORD}"
                   },
                   {
                     "name": "MONGODB_DATABASE",
@@ -198,7 +198,7 @@
                   },
                   {
                     "name": "MONGODB_ADMIN_PASSWORD",
-                    "value": "${MONGODB_ADMIN_PASSWORD}"
+                    "value": "${DATABASE_ADMIN_PASSWORD}"
                   }
                 ],
                 "resources": {
@@ -290,11 +290,11 @@
                 "env": [
                   {
                     "name": "MONGODB_USER",
-                    "value": "${MONGODB_USER}"
+                    "value": "${DATABASE_USER}"
                   },
                   {
                     "name": "MONGODB_PASSWORD",
-                    "value": "${MONGODB_PASSWORD}"
+                    "value": "${DATABASE_PASSWORD}"
                   },
                   {
                     "name": "MONGODB_DATABASE",
@@ -302,7 +302,7 @@
                   },
                   {
                     "name": "MONGODB_ADMIN_PASSWORD",
-                    "value": "${MONGODB_ADMIN_PASSWORD}"
+                    "value": "${DATABASE_ADMIN_PASSWORD}"
                   }
                 ],
                 "readinessProbe": {
@@ -361,16 +361,16 @@
     {
       "name": "MEMORY_LIMIT",
       "displayName": "Memory Limit",
-      "description": "Maximum amount of memory the Node.js container can use. The default value of 256Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
+      "description": "Maximum amount of memory the Node.js container can use. The default value of 192Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
       "required": true,
-      "value": "256Mi"
+      "value": "192Mi"
     },
     {
       "name": "MEMORY_MONGODB_LIMIT",
       "displayName": "Memory Limit (MongoDB)",
-      "description": "Maximum amount of memory the MongoDB container can use. The default value of 256Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
+      "description": "Maximum amount of memory the MongoDB container can use. The default value of 192Mi ensures that this quickstart will run on a 512Mi tier. If you experience performance issues upgrade to a larger tier and increase this limit.",
       "required": true,
-      "value": "256Mi"
+      "value": "192Mi"
     },
     {
       "name": "SOURCE_REPOSITORY_URL",
