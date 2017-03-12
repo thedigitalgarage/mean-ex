@@ -90,6 +90,26 @@
             },
             "env": [
               {
+                "name": "DATABASE_SERVICE_NAME",
+                "value": "${DATABASE_SERVICE_NAME}"
+              },
+              {
+                "name": "MONGODB_USER",
+                "value": "${DATABASE_USER}"
+              },
+              {
+                "name": "MONGODB_PASSWORD",
+                "value": "${DATABASE_PASSWORD}"
+              },
+              {
+                "name": "MONGODB_DATABASE",
+                "value": "${DATABASE_NAME}"
+              },
+              {
+                "name": "MONGODB_ADMIN_PASSWORD",
+                "value": "${DATABASE_ADMIN_PASSWORD}"
+              },
+              {
                 "name": "NPM_MIRROR",
                 "value": "${NPM_MIRROR}"
               }
