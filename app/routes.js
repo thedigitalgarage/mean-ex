@@ -1,8 +1,5 @@
 // app/routes.js
 
-// get the task model
-var Task = require('./models/tasks');
-
 // make the routes available to our application with module.exports
 module.exports = function(app) {
     // application -------------------------------------------------------------
