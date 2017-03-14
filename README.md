@@ -33,7 +33,7 @@ We can also [create new apps using template files](http://docs.thedigitalgarage.
 
 Looking at the repo, you'll notice one file in the openshift/templates directory:
 
-	mean-ex
+mean-ex
   ├── app
   ├── config
   │   └── database.js
