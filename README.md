@@ -1,9 +1,9 @@
 MEAN Stack sample app on Digital Garage!
 -----------------
 
-The MEAN stack is a popular, open-source, full-stack JavaScript framework for building dynamic websites and web applications. By combining useful JavaScript modules such as MongoDB, Express.js, AngularJS, and Node.js. The MEAN Stack has achieved a high level of harmony between the client and server. In fact, the MEAN Stack is JavaScript from front to back which means that these applications are quick to put together, and represent the modern state of web application development.
+The MEAN stack is a popular, open-source, full-stack JavaScript framework for building dynamic websites and web applications by combining useful JavaScript modules such as MongoDB, Express.js, AngularJS, and Node.js. The MEAN Stack has achieved a high level of harmony between the client and server. In fact, the MEAN Stack is JavaScript from front to back which means that these applications are quick to put together, and represent the modern state of web application development.
 
-In this brief tutorial we are going combine the MEAN Stack with best practices in both application architecture and deployment. Namely, Microservices and Linux Containers. We will bootstrap our MEAN Stack application on the popular PaaS provider, the Digital Garage. Digital Garage utilizes Red Hat Openshift, Google Kubernetes and Docker Containers to create an open and efficient way to incorporate these best practices into our project.
+In this brief tutorial we combine the MEAN Stack with best practices in both application architecture and deployment, namely, Microservices and Linux Containers. We will bootstrap our MEAN Stack application on the popular PaaS provider, the Digital Garage. Digital Garage utilizes Red Hat Openshift, Google Kubernetes and Docker Containers to create an open and efficient way to incorporate these best practices into our project.
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ We will be:
 + Bootstrapping the MEAN Stack in your MEAN Stack Application workspace with MongoDB and Node.js containers from Docker Hub.
 + Building the AngularJS application from the source in the forked repository and deploying the application on the MEAN Stack.
 
-After you have signed into your Github account, go to: [www.github.com/thdigitalgarage/mean-ex](www.github.com/thedigitalgarage/mean-ex) and fork the repository into your own account. This repository contains some files and a file structure that will give you a quick start on your MEAN application. I will go into more detail on the files and file structure a little further into the tutorial. For now, let's complete our setup by logging into your Digital Garage account and set up the MEAN stack.
+After signing into your Github account, go to: [www.github.com/thdigitalgarage/mean-ex](www.github.com/thedigitalgarage/mean-ex) and fork the repository into your own account. This repository contains some files and a file structure that will give you a quick start on your MEAN application. I go into more detail on the files and file structure a little further into the tutorial. For now, let's complete our setup by logging into your Digital Garage account and set up the MEAN stack.
 
 After signing into your Digital Garage account, Choose the Add to Project link in the top menu bar to go to the template catalog.
 
@@ -37,7 +37,7 @@ That's it. Digital Garage is now setting up your MEAN Stack. On the next page yo
 
 ## File Structure
 
-Now that we have the MEAN Example repository forked into your account, let's take a few minutes to review the file structure for the repository. There are many ways to structure a MEAN application. I have tried to take the best-practices from several tutorials and create a simple yet expandable file structure this example project. For further reading on file structures for the MEAN Stack, [Mean.io](http://mean.io) is a good boilerplate to see best practices and how to separate file structure. For now, though, we will just use the following structure adjust as we go.
+Now that we have the MEAN Example repository forked into your account, let's take a few minutes to review the file structure for the repository. There are many ways to structure a MEAN application. I have tried to take the best-practices from several tutorials and create a simple yet expandable file structure for this example project. For further reading on file structures for the MEAN Stack, [Mean.io](http://mean.io) is a good boilerplate to see best practices and how to separate file structure. For now we will just use the following structure and adjust as we go.
 
 ```
 
