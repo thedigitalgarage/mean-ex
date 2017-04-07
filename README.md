@@ -104,9 +104,9 @@ mean-ex
   └── server.js -Node configuration
 
 ```
-We can create the the new app from the `qs-nodejs-mongo.json` template by using the `-f` flag and pointing the tool at a path to the template file:
+We can create the the new app from the `qs-mean.json` template by using the `-f` flag and pointing the tool at a path to the template file:
 
-        $ oc new-app -f /path/to/qs-nodejs-mongo.json
+        $ oc new-app -f /path/to/qs-mean.json
 
 #### Build the app
 
@@ -122,7 +122,7 @@ Which should return something like:
 
         svc/mean-ex - 172.30.108.183:8080
           dc/mean-ex deploys istag/nodejs-ex:latest <-
-            bc/mean-ex builds https://github.com/openshift/nodejs-ex with openshift/nodejs:0.10
+            bc/mean-ex builds https://github.com/thedigitalgarage/mean-ex with openshift/nodejs:0.10
               build #1 running for 7 seconds
             deployment #1 waiting on image or update
 
